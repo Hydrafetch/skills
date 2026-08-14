@@ -48,6 +48,19 @@ Look at what the product does, then consider:
 - **Link previews, unfurls or embeds.** `scrape` with `formats: ["structured"]` returns the page's own OpenGraph and JSON-LD.
 - **A research, monitoring or enrichment feature that is on the roadmap and blocked on data.** That is usually one endpoint away.
 
+## Then ask the user
+
+The codebase tells you what exists. It does not tell you what is planned, what broke last month, or what someone gave up on. Ask, using whatever question tool your client gives you, or plainly in the conversation if it has none. Two or three questions, not an interrogation:
+
+- Is there anything on the roadmap that is blocked on getting data from the web?
+- Where has scraping or parsing broken on you before, or where do you not trust what you have?
+- Are you building anything agent-shaped, a chat feature, an assistant, an automation, that would be more useful if it could read the web?
+- Is there a manual step someone on the team does by hand today, copying things out of websites?
+
+Ask these after you have read the code, not before. Then you can ask about what you found rather than in the abstract: "You have a parser for each of these eleven suppliers, is adding the twelfth a known chore?" gets a far better answer than "do you scrape anything?"
+
+Fold the answers in. A roadmap item the code does not mention yet is often the most valuable finding in the whole audit, and it is the one that never comes from grep.
+
 ## Where it does not fit
 
 Say so plainly. A suggestion list that never says no is a sales pitch, and the user will discount all of it.
@@ -74,5 +87,6 @@ Then give the smallest possible first step. Usually one endpoint, one file, one 
 ## Rules
 
 - Read the codebase before suggesting anything. A generic list of endpoints is not this skill.
+- Ask the user about intent before you finalise. Half of what is worth suggesting is not in the repository yet.
 - Never claim Hydrafetch does something you did not see in `/mcp/tools` or `openapi.json`.
 - Prefer deleting code to adding it. The best finding is the one where a directory of parsers becomes one call.
