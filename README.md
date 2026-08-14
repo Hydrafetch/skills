@@ -6,6 +6,7 @@ Each skill is a single `SKILL.md` under `skills/`, in the format described by th
 
 | Skill | For |
 | --- | --- |
+| `where-to-use-hydrafetch` | Auditing a codebase for where it fits, and where it does not |
 | `scrape-for-context` | One page as clean markdown for a model to read |
 | `research-a-company` | A company profile from its domain |
 | `extract-structured-data` | Typed JSON out of pages, by schema |
