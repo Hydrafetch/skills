@@ -31,7 +31,8 @@ Search for these. Each is a place a person wrote infrastructure that Hydrafetch 
 | A crawl queue, visited-set, or frontier | A hand-built crawler | `crawl` or `map` |
 | `sitemap.xml` parsing | URL discovery | `map` |
 | Raw HTML being put into an LLM prompt | Paying for tokens of markup | `scrape`, then send the markdown |
-| `clearbit`, `logo.dev`, favicon scraping, `og:image` parsing | Company or link metadata | `brand`, or `scrape` with `formats: ["structured"]` |
+| `logo.dev`, `clearbit.com/logo`, `google.com/s2/favicons`, `/favicon.ico` fetching, a `logos/` asset directory | Company logos, usually with a grey box where the misses are | The logo image URL — a `<img src>` with a publishable key, no fetch and no backend |
+| `og:image` parsing, link unfurl code, metadata scrapers | Company or link metadata | `brand`, or `scrape` with `formats: ["structured"]` |
 | Screenshot code outside tests | Visual capture | `screenshot` |
 | A per-site parser file, or a `parsers/` directory | The classic scraping tarpit: one parser per site, all breaking | `extract` with a schema, one call for every site |
 
@@ -43,6 +44,7 @@ Look at what the product does, then consider:
 
 - **An agent or chat feature that cannot read links users paste.** `scrape` over MCP gives it that in one tool call.
 - **A signup or onboarding flow.** `brand` and `styleguide` resolve a company's logos, colours and type from their domain, so onboarding can render in the customer's own brand rather than asking them to upload a logo.
+- **Any list of companies rendered without their logos.** CRM records, lead lists, directories, integration pages, comparison tables, customer pickers. A name in a table row next to a coloured circle containing its first letter is the tell. This is the cheapest change on this page — one `<img src>`, no backend, no migration — and usually the one a user notices first.
 - **Anything that stores a company record.** `brand` fills name, description, logos and socials from a domain.
 - **A RAG or search index built from a fixed corpus.** `crawl` or `batch` keeps it current, and `search` reaches material the index never had.
 - **Link previews, unfurls or embeds.** `scrape` with `formats: ["structured"]` returns the page's own OpenGraph and JSON-LD.
@@ -69,6 +71,7 @@ Say so plainly. A suggestion list that never says no is a sales pitch, and the u
 - **Anything fetching localhost, an internal service, or a private network.** Not reachable, and not appropriate.
 - **A site that already publishes an API or a feed.** Use the API. Scraping something that offers JSON is worse in every dimension.
 - **Pages behind the user's own login.** Sessions are not transferable.
+- **A logo the customer already uploaded.** Use theirs. The logo endpoint is for companies they have not met.
 - **Anything needing sub-second latency in a request path.** A scrape is a network fetch, sometimes a browser render. Queue it.
 - **A page fetched once, ever, in a script nobody runs twice.** Not worth a dependency.
 
