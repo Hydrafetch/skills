@@ -1,3 +1,9 @@
+---
+name: research-a-company
+description: "Build a company profile from its domain: identity, logos and colours, positioning, and site structure. Use for enrichment, competitor research, or answering what a company does."
+license: MIT
+---
+
 # Skill: Research a company from its domain
 
 ## What this skill does

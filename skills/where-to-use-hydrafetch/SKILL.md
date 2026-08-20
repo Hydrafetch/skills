@@ -1,3 +1,9 @@
+---
+name: where-to-use-hydrafetch
+description: "Audit a codebase for places Hydrafetch would replace fragile scraping infrastructure or add a capability the project lacks. Discovers current endpoints and tools at runtime, reports findings with file paths and estimated credit cost, and says where it does not fit."
+license: MIT
+---
+
 # Skill: Find where Hydrafetch fits in a codebase
 
 ## What this skill does

@@ -1,3 +1,9 @@
+---
+name: extract-structured-data
+description: "Pull typed, schema-shaped JSON out of web pages. Use when you need fields rather than prose, or the same fields from many pages."
+license: MIT
+---
+
 # Skill: Extract typed data from pages
 
 ## What this skill does

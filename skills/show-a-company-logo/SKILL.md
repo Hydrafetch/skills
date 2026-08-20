@@ -1,3 +1,9 @@
+---
+name: show-a-company-logo
+description: "Render a real company logo from a domain: an embeddable image URL for the browser, or JSON for a server. Use for CRM records, lead lists, directories, integration pages, or anywhere a company name currently sits next to a coloured initial."
+license: MIT
+---
+
 # Skill: Show a company logo
 
 ## What this skill does

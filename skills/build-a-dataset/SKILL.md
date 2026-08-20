@@ -1,3 +1,9 @@
+---
+name: build-a-dataset
+description: "Assemble many pages into a table using queued crawl and batch jobs rather than a loop. Use for corpora, bulk enrichment, or any job over more than a handful of URLs."
+license: MIT
+---
+
 # Skill: Build a dataset from the web
 
 ## What this skill does

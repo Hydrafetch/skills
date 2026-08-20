@@ -1,3 +1,9 @@
+---
+name: scrape-for-context
+description: "Turn one URL into clean markdown for a model to read. Use when a user gives you a link, when you need a page as grounding, or when a previous fetch returned a JavaScript shell or a cookie wall."
+license: MIT
+---
+
 # Skill: Scrape a page for LLM context
 
 ## What this skill does
