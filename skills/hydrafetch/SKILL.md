@@ -18,7 +18,9 @@ Use the hosted OAuth MCP server when it is already connected:
 https://api.hydrafetch.com/mcp
 ```
 
-Otherwise call the REST API at `https://api.hydrafetch.com/v1/web` with an `X-API-Key: <key>` header. The same header authenticates the MCP endpoint when you hold a raw key rather than an OAuth token; `Authorization: Bearer` is not accepted on either surface.
+Otherwise call the REST API at `https://api.hydrafetch.com/v1/web` with an `X-API-Key: <key>` header.
+
+The two surfaces use different schemes, so do not carry one over to the other. REST reads `X-API-Key` only. The MCP endpoint reads `Authorization: Bearer <key>` only, and accepts either a raw `hf_` key or an OAuth token there.
 
 ## Choose the narrowest operation
 
