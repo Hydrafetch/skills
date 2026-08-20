@@ -18,7 +18,7 @@ Use the hosted OAuth MCP server when it is already connected:
 https://api.hydrafetch.com/mcp
 ```
 
-Otherwise call the REST API at `https://api.hydrafetch.com/v1/web` with `Authorization: Bearer <key>`.
+Otherwise call the REST API at `https://api.hydrafetch.com/v1/web` with an `X-API-Key: <key>` header. The same header authenticates the MCP endpoint when you hold a raw key rather than an OAuth token; `Authorization: Bearer` is not accepted on either surface.
 
 ## Choose the narrowest operation
 
@@ -66,7 +66,7 @@ Basic request pattern:
 
 ```bash
 curl -sS https://api.hydrafetch.com/v1/web/scrape \
-  -H "Authorization: Bearer $HYDRAFETCH_API_KEY" \
+  -H "X-API-Key: $HYDRAFETCH_API_KEY" \
   -H 'content-type: application/json' \
   -d '{"url":"https://example.com","formats":["markdown"]}' \
 | jq -r '.data.markdown'
@@ -76,7 +76,7 @@ Typed JSON from several pages at once:
 
 ```bash
 curl -sS https://api.hydrafetch.com/v1/web/extract \
-  -H "Authorization: Bearer $HYDRAFETCH_API_KEY" \
+  -H "X-API-Key: $HYDRAFETCH_API_KEY" \
   -H 'content-type: application/json' \
   -d '{"urls":["https://example.com/a"],"schema":{"type":"object","properties":{"name":{"type":"string"},"price_usd":{"type":"number"}}}}' \
 | jq '.data'
