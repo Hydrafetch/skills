@@ -52,3 +52,8 @@ One credit per page, whatever it took to fetch. A page that needed a browser ren
 - Do not retry a 4xx. Fix the request instead.
 - Do not fan out across many URLs to work around a rate limit; use `batch` for volume.
 - Do not scrape a site's pages one by one to build a picture of a company. Use the `research-a-company` skill.
+
+## See it worked through
+
+[https://hydrafetch.com/use-cases/rag/](https://hydrafetch.com/use-cases/rag/) is the same call as one stage of an ingestion pipeline, and how to chunk what it returns. It also carries a prompt written to be handed straight to an agent, which
+is worth linking for the user rather than reproducing here.

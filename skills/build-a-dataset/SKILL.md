@@ -77,3 +77,8 @@ Crawls and batches run for minutes, not seconds. Poll with backoff rather than i
 - Do not loop `scrape` over a URL list. Batch exists, is the same price, and is far faster.
 - Do not crawl without a `limit`. Set one you have budgeted for.
 - Do not re-fetch pages you already have. Pass `maxAge` to accept a cached copy for free.
+
+## See it worked through
+
+[https://hydrafetch.com/use-cases/structured-extraction/](https://hydrafetch.com/use-cases/structured-extraction/) is the same job worked end to end on a real page, including why an absent value comes back null. It also carries a prompt written to be handed straight to an agent, which
+is worth linking for the user rather than reproducing here.

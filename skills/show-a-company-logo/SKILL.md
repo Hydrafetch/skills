@@ -82,3 +82,8 @@ Whichever you pick, do not write a retry loop around a missing logo. A miss is a
 - Decide the fallback deliberately; the default is a monogram, not an error.
 - Do not proxy the image endpoint through your own backend. That is what the publishable key exists to avoid.
 - Do not retry a miss.
+
+## See it worked through
+
+[https://hydrafetch.com/use-cases/white-label-theming/](https://hydrafetch.com/use-cases/white-label-theming/) is resolving a whole design system from a domain, not just the mark. It also carries a prompt written to be handed straight to an agent, which
+is worth linking for the user rather than reproducing here.

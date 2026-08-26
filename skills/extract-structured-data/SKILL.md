@@ -70,3 +70,8 @@ Each URL comes back with its own result. A `null` means the model could not find
 
 - Do not extract when the page publishes structured data already. Scrape with `formats: ["structured"]` first and read its JSON-LD, which is authored by the site and costs 1 credit.
 - Do not send 50 URLs to find out whether your schema works. Try one.
+
+## See it worked through
+
+[https://hydrafetch.com/use-cases/structured-extraction/](https://hydrafetch.com/use-cases/structured-extraction/) is a schema and the fifty typed records it produced, with the nulls left in. It also carries a prompt written to be handed straight to an agent, which
+is worth linking for the user rather than reproducing here.

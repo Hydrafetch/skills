@@ -67,3 +67,8 @@ A thorough profile is typically brand (5) plus three scrapes (3) plus a map (1):
 - Do not scrape a homepage to get a logo. `brand` returns real assets with dimensions and background suitability.
 - Do not crawl an entire site for a summary.
 - Do not infer a company's colours from a screenshot. `styleguide` returns the resolved hex values.
+
+## See it worked through
+
+[https://hydrafetch.com/use-cases/company-enrichment/](https://hydrafetch.com/use-cases/company-enrichment/) is what a domain resolves to, and which fields carry a confidence worth reading. It also carries a prompt written to be handed straight to an agent, which
+is worth linking for the user rather than reproducing here.

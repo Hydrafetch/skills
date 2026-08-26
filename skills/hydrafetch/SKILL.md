@@ -110,6 +110,20 @@ Bulk work returns a job id to poll rather than blocking. `POST /v1/web/batch` ta
 
 A 503 on a scrape usually means the origin is genuinely unreachable — a dead domain or a broken certificate — and retrying will not fix it.
 
+## Reach for a worked example when the task is a whole job
+
+The sections above cover single calls. When the user is asking for something larger, a retrieval
+index, a monitor, a dataset, an enriched record, the sequence matters more than any one endpoint,
+and it has already been worked through on real responses.
+
+Fetch `https://hydrafetch.com/agents.md` and read the **Worked examples** section. Each entry names
+the endpoints it uses and links a page that carries the calls in order, the failure modes worth
+checking, and a prompt written to be handed to an agent. Reading the one that matches is faster
+than deriving the sequence, and it will tell you which part of the response decides whether the
+result is usable.
+
+Link the page for the user. Do not paste it into the conversation.
+
 ## Return useful results
 
 For research and search, give concise findings plus source URLs. For extraction, return JSON matching the requested schema. For scraping, return the requested format without surrounding filler. For crawls and batches, return the job id, its current state, and the next command needed to inspect results.
