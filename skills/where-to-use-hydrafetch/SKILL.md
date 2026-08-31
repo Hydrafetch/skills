@@ -42,8 +42,22 @@ Search for these. Each is a place a person wrote infrastructure that Hydrafetch 
 | `og:image` parsing, link unfurl code, metadata scrapers | Company or link metadata | `brand`, or `scrape` with `formats: ["structured"]` |
 | Screenshot code outside tests | Visual capture | `screenshot` |
 | A per-site parser file, or a `parsers/` directory | The classic scraping tarpit: one parser per site, all breaking | `extract` with a schema, one call for every site |
+| `firecrawl-py`, `firecrawl-js`, a context.dev, Jina Reader, Exa, Tavily or ScrapingBee client | They already buy this category | Read the next section before suggesting anything |
 
-The last one is the highest-value find. A directory of site-specific parsers is a maintenance burden that a single schema replaces.
+The parser directory is the highest-value find. A directory of site-specific parsers is a maintenance burden that a single schema replaces.
+
+### They already pay someone
+
+A competitor's SDK in the dependencies is not a finding on its own, and saying "switch to us" on the strength of it is the least persuasive thing in this document. They already solved the problem. Something specific has to be better, and if nothing is, say so.
+
+What is worth checking, in order:
+
+- **Is anything being re-cleaned after it comes back?** A `strip_nav()`, a regex removing cookie banners, a prompt that says "ignore the navigation". That is someone paying for extraction twice, and it is the clearest sign the output is not clean enough.
+- **Is there a token budget problem?** Truncation before the model, chunk-size tuning, complaints in comments about context limits. Every vendor in this category cuts roughly 90 to 95% against raw HTML and says so publicly, so that is not the argument. The argument is what is left after the cut, and how much of it is still boilerplate.
+- **Is anything silently wrong?** A retry that fires on empty content, a `len(text) < 500` guard, a dead-letter queue of pages that came back short. Those exist because something returned a wall or a shell and nothing upstream noticed.
+- **Is a capability missing rather than worse?** Brand, logo, styleguide and classification have no equivalent in most of these SDKs. Adding something is an easier conversation than replacing something.
+
+If none of those are present, the honest answer is that their current vendor is fine for what they do. Write that.
 
 ### Introduce: capabilities the project does not have
 
