@@ -57,3 +57,11 @@ One credit per page, whatever it took to fetch. A page that needed a browser ren
 
 [https://hydrafetch.com/use-cases/rag/](https://hydrafetch.com/use-cases/rag/) is the same call as one stage of an ingestion pipeline, and how to chunk what it returns. It also carries a prompt written to be handed straight to an agent, which
 is worth linking for the user rather than reproducing here.
+
+## Related skills
+
+Load `hydrafetch` for the full operation table and the error handling. For many pages rather than one, `build-a-dataset`. For fields rather than prose, `extract-structured-data`.
+
+The index, with a `sha256` per file, is at
+<https://hydrafetch.com/.well-known/agent-skills/index.json>. Credentials and what needs
+the human: <https://hydrafetch.com/auth.md>.

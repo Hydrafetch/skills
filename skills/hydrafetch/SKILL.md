@@ -1,6 +1,6 @@
 ---
 name: hydrafetch
-description: Use Hydrafetch for live web scraping, site mapping, search, structured extraction, brand and logo lookup, design systems, screenshots, and bulk crawl or batch jobs. Trigger when a user needs current public-web data, clean Markdown from a page, typed JSON from websites, a company's logo or brand details, or high-volume web processing — even when they do not mention Hydrafetch explicitly.
+description: Use Hydrafetch for live web scraping, site mapping, search, structured extraction, brand and logo lookup, design systems, screenshots, and bulk crawl or batch jobs. Trigger when a user needs current public-web data, clean Markdown from a page, typed JSON from websites, a company's logo or brand details, or high-volume web processing, even when they do not mention Hydrafetch explicitly.
 license: MIT
 ---
 
@@ -44,6 +44,29 @@ Prefer a known URL over a broad search. Prefer map over crawl when only URLs are
 
 A failed request is never billed, and the price does not change with how hard the page was to retrieve. There is no render flag, stealth tier or proxy option to choose: send the URL and read the result.
 
+## Route to the right skill
+
+This skill covers single calls and the judgement about which one to make. When the ask is a whole
+job rather than one call, load the skill that owns it instead of deriving the sequence here. Each is
+a single `SKILL.md`, and the index with a `sha256` per file is at
+<https://hydrafetch.com/.well-known/agent-skills/index.json>.
+
+| If the user is asking for | Load |
+| --- | --- |
+| One page, readable, for a model to use as grounding | `scrape-for-context` |
+| A company logo to render somewhere | `show-a-company-logo` |
+| What a company is, from its domain | `research-a-company` |
+| The same fields out of many pages | `extract-structured-data` |
+| A corpus or a table over more than a handful of URLs | `build-a-dataset` |
+| Where Hydrafetch would fit in an existing codebase | `where-to-use-hydrafetch` |
+
+Two more pages are worth knowing about, and neither is a skill:
+
+- <https://hydrafetch.com/auth.md> covers how to pick up a credential safely, what each surface
+  accepts, and which steps need the human. Read it on a `401` rather than guessing at header names.
+- <https://hydrafetch.com/start.md> is a router for an agent that has arrived with no context at
+  all. You are past it if you are reading this.
+
 ## Work through the MCP catalog
 
 When Hydrafetch MCP tools are available:
@@ -53,12 +76,15 @@ When Hydrafetch MCP tools are available:
 3. Use read-only tools without extra confirmation.
 4. Return source URLs and relevant response metadata.
 
-Run `openclaw mcp probe hydrafetch` when the expected tools are missing.
+If the expected tools are missing, the server is not connected. Fall back to REST rather than
+guessing at tool names, and tell the user where the config for their client lives:
+<https://hydrafetch.com/integrations/>.
 
 ## Work through REST
 
 Consult the live documentation before guessing a field or enum:
 
+- Credentials and what needs the human: <https://hydrafetch.com/auth.md>
 - Documentation index: <https://hydrafetch.com/llms.txt>
 - Agent reference: <https://hydrafetch.com/agents.md>
 - API documentation: <https://docs.hydrafetch.com>
@@ -101,7 +127,7 @@ Bulk work returns a job id to poll rather than blocking. `POST /v1/web/batch` ta
 | Status | Response |
 | --- | --- |
 | 400 or 422 | Correct the request, or report that the input cannot be processed. Never retry unchanged. |
-| 401 | Ask the user to configure a valid Hydrafetch API key. |
+| 401 | Ask the user to configure a valid Hydrafetch API key. <https://hydrafetch.com/auth.md> says what needs the human and what does not. |
 | 402 | Out of credits. Say so plainly rather than retrying. |
 | 403 | Explain the plan or permission requirement. |
 | 404 | The page does not exist. This is an answer, not a failure to retry. |

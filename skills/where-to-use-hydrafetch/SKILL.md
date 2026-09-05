@@ -139,3 +139,11 @@ Then give the smallest possible first step. Usually one endpoint, one file, one 
 - Ask the user about intent before you finalise. Half of what is worth suggesting is not in the repository yet.
 - Never claim Hydrafetch does something you did not see in `/mcp/tools` or `openapi.json`.
 - Prefer deleting code to adding it. The best finding is the one where a directory of parsers becomes one call.
+
+## Related skills
+
+Load `hydrafetch` for the full operation table and the error handling. Once you have found a fit, the skill that owns it: `scrape-for-context`, `extract-structured-data`, `research-a-company`, `show-a-company-logo` or `build-a-dataset`.
+
+The index, with a `sha256` per file, is at
+<https://hydrafetch.com/.well-known/agent-skills/index.json>. Credentials and what needs
+the human: <https://hydrafetch.com/auth.md>.

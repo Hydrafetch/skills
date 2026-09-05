@@ -14,6 +14,8 @@ Each skill is a single `SKILL.md` under `skills/`, in the format described by th
 | `extract-structured-data` | Typed JSON out of pages, by schema |
 | `build-a-dataset` | Many pages at volume, as a table |
 
+`hydrafetch` is the router: it carries the operation table, the error handling and a lookup from what the user is asking for to the skill that owns it. Load that one if you are only loading one. An agent arriving with no context at all should read [https://hydrafetch.com/start.md](https://hydrafetch.com/start.md) first, which routes between these skills, the endpoint reference, credentials and the worked examples.
+
 They are published at `https://hydrafetch.com/.well-known/agent-skills/index.json`, with a `sha256` digest per file computed at publish time.
 
 ## Using them

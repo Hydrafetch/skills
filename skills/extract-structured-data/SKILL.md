@@ -75,3 +75,11 @@ Each URL comes back with its own result. A `null` means the model could not find
 
 [https://hydrafetch.com/use-cases/structured-extraction/](https://hydrafetch.com/use-cases/structured-extraction/) is a schema and the fifty typed records it produced, with the nulls left in. It also carries a prompt written to be handed straight to an agent, which
 is worth linking for the user rather than reproducing here.
+
+## Related skills
+
+Load `hydrafetch` for the full operation table and the error handling. For prose rather than fields, `scrape-for-context`. For more URLs than a single call should carry, `build-a-dataset`.
+
+The index, with a `sha256` per file, is at
+<https://hydrafetch.com/.well-known/agent-skills/index.json>. Credentials and what needs
+the human: <https://hydrafetch.com/auth.md>.

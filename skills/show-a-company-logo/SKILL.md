@@ -87,3 +87,11 @@ Whichever you pick, do not write a retry loop around a missing logo. A miss is a
 
 [https://hydrafetch.com/use-cases/white-label-theming/](https://hydrafetch.com/use-cases/white-label-theming/) is resolving a whole design system from a domain, not just the mark. It also carries a prompt written to be handed straight to an agent, which
 is worth linking for the user rather than reproducing here.
+
+## Related skills
+
+Load `hydrafetch` for the full operation table and the error handling. For everything else a domain resolves to, `research-a-company`.
+
+The index, with a `sha256` per file, is at
+<https://hydrafetch.com/.well-known/agent-skills/index.json>. Credentials and what needs
+the human: <https://hydrafetch.com/auth.md>.

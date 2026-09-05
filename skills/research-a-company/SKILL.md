@@ -72,3 +72,11 @@ A thorough profile is typically brand (5) plus three scrapes (3) plus a map (1):
 
 [https://hydrafetch.com/use-cases/company-enrichment/](https://hydrafetch.com/use-cases/company-enrichment/) is what a domain resolves to, and which fields carry a confidence worth reading. It also carries a prompt written to be handed straight to an agent, which
 is worth linking for the user rather than reproducing here.
+
+## Related skills
+
+Load `hydrafetch` for the full operation table and the error handling. For the mark on its own at a fifth of the cost, `show-a-company-logo`. For the same fields across many companies, `extract-structured-data`.
+
+The index, with a `sha256` per file, is at
+<https://hydrafetch.com/.well-known/agent-skills/index.json>. Credentials and what needs
+the human: <https://hydrafetch.com/auth.md>.

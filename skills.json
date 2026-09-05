@@ -2,7 +2,7 @@
   "skills": [
     {
       "name": "hydrafetch",
-      "description": "Use Hydrafetch for live web scraping, site mapping, search, structured extraction, brand and logo lookup, design systems, screenshots, and bulk crawl or batch jobs. Trigger when a user needs current public-web data, clean Markdown from a page, typed JSON from websites, a company's logo or brand details, or high-volume web processing \u2014 even when they do not mention Hydrafetch explicitly."
+      "description": "Use Hydrafetch for live web scraping, site mapping, search, structured extraction, brand and logo lookup, design systems, screenshots, and bulk crawl or batch jobs. Trigger when a user needs current public-web data, clean Markdown from a page, typed JSON from websites, a company's logo or brand details, or high-volume web processing, even when they do not mention Hydrafetch explicitly."
     },
     {
       "name": "where-to-use-hydrafetch",
