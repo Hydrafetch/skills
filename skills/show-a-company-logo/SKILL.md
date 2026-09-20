@@ -49,7 +49,7 @@ Returns the URL plus what was chosen — format, dimensions, variant. One credit
 
 **`theme` is the background the logo sits on, not the logo's own colour.** `light` means a light background, so it returns a mark that reads against one. Getting this backwards is the single most common way to end up with an invisible logo.
 
-Use `auto` when the surface follows the viewer's system theme. Where a mark exists in only one colour, `auto` returns a version that adapts, so it stays visible in both.
+Use `auto` only when the surface follows the viewer's system theme. An adaptive mark carries the rule inside the image, and an image loaded through an `<img>` tag cannot see the page it sits on, only the viewer's operating system setting. So if the app has its own light and dark toggle, `auto` is wrong every time a visitor sets that toggle against their OS. Resolve the theme in the app and pass `light` or `dark`.
 
 `icon` for anything small or square — table rows, avatars, favicons, dense lists. `wordmark` when there is horizontal room and the name should be readable: logo walls, "trusted by" strips, invoice headers, slide footers.
 
@@ -79,6 +79,7 @@ Whichever you pick, do not write a retry loop around a missing logo. A miss is a
 
 - Publishable key in the browser, secret key on the server. Never the reverse.
 - `theme` describes the background, not the logo.
+- Pass the theme the app resolved. Reach for `auto` only when the app's theme is the operating system's.
 - Decide the fallback deliberately; the default is a monogram, not an error.
 - Do not proxy the image endpoint through your own backend. That is what the publishable key exists to avoid.
 - Do not retry a miss.
