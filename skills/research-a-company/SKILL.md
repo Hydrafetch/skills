@@ -56,7 +56,7 @@ Returns their URLs without scraping them, one credit. Read the list, pick the ha
 GET https://api.hydrafetch.com/v1/web/styleguide?domain=acme.com
 ```
 
-Colours by role with contrast ratios, the type scale, corner radius and button styling, read from computed styles in a real browser. 10 credits, so do not call it for a description.
+Colours by role with contrast ratios, the dark theme colours when the site has one (`dark` is `null` when it does not, so do not invent one), the type scale, corner radius, button styling and how panels and the header are drawn, read from computed styles in a real browser. It also returns the design as CSS, Tailwind and shadcn/ui stylesheets. 10 credits, so do not call it for a description. To match how the site looks rather than only its tokens, take a screenshot of the page as well.
 
 ## Budgeting
 
