@@ -43,6 +43,8 @@ Defaults are tuned for reading, so start with none.
 
 A low confidence with a short `wordCount` usually means the page really is short, not that extraction failed. Retry with `preferStructure: true` before concluding the page is empty.
 
+If what came back is a block or error page, or plainly leaves out a section the page has, rate it: the `feedback` tool or `POST /v1/web/feedback` with the response's `requestId`, `"rating": "bad"` and a short note. It is free and a person looks at it.
+
 ## Cost
 
 One credit per page, whatever it took to fetch. A page that needed a browser render or an unblocker costs the same as one that came back on the first try. Failed requests are never billed.

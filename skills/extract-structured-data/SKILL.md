@@ -66,6 +66,8 @@ Check the page has the data first. Extracting from a JavaScript shell returns nu
 
 Each URL comes back with its own result. A `null` means the model could not find the field, not that the call failed. Nulls across every URL usually mean the schema does not match what the pages say; change the schema rather than retrying.
 
+A null on a page that clearly shows the value is different: rate that result with the `feedback` tool or `POST /v1/web/feedback`, its `requestId`, `"rating": "bad"`, reason `missing_content` and a note naming the field. It is free and a person looks at it.
+
 ## Do not
 
 - Do not extract when the page publishes structured data already. Scrape with `formats: ["structured"]` first and read its JSON-LD, which is authored by the site and costs 1 credit.

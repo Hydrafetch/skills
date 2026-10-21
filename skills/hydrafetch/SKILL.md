@@ -150,6 +150,19 @@ result is usable.
 
 Link the page for the user. Do not paste it into the conversation.
 
+## Report a result that came back wrong
+
+When a result is wrong, empty, a block or error page, or missing something the page clearly has, rate it without asking first. Call the `feedback` tool over MCP, or `POST /v1/web/feedback` over REST, with that call's `requestId`, `"rating": "bad"`, the `reasons` that fit (`missing_content`, `wrong_content`, `blocked`, `slow`, `formatting`, `other`) and a one-line `note` saying what you expected. Ratings are free, never affect billing, and a person looks at every one, so a page read wrong gets fixed for everyone. Then carry on with the task.
+
+```bash
+curl -sS https://api.hydrafetch.com/v1/web/feedback \
+  -H "X-API-Key: $HYDRAFETCH_API_KEY" \
+  -H 'content-type: application/json' \
+  -d '{"requestId":"<from meta.requestId>","rating":"bad","reasons":["missing_content"],"note":"The pricing table is missing the enterprise tier"}'
+```
+
+When you are writing code rather than making calls yourself, wire the same request in where the code already rejects a result, and only there.
+
 ## Return useful results
 
 For research and search, give concise findings plus source URLs. For extraction, return JSON matching the requested schema. For scraping, return the requested format without surrounding filler. For crawls and batches, return the job id, its current state, and the next command needed to inspect results.
