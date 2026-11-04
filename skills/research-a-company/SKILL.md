@@ -1,6 +1,6 @@
 ---
 name: research-a-company
-description: "Build a company profile from its domain: identity, logos and colours, positioning, and site structure. Use for enrichment, competitor research, or answering what a company does."
+description: "Build a company profile from its domain: identity, logos and colours, positioning, site structure and hiring. Use for enrichment, competitor research, or answering what a company does."
 license: MIT
 ---
 
@@ -19,7 +19,7 @@ Builds a picture of a company from nothing but its domain: who they are, what th
 
 ## The sequence
 
-Work in this order and stop as soon as you have what was asked for. Each step costs credits, so do not run all four out of habit.
+Work in this order and stop as soon as you have what was asked for. Each step costs credits, so do not run all five out of habit.
 
 **1. Identity — one call, and often enough.**
 
@@ -58,6 +58,15 @@ GET https://api.hydrafetch.com/v1/web/styleguide?domain=acme.com
 
 Colours by role with contrast ratios, the dark theme colours when the site has one (`dark` is `null` when it does not, so do not invent one), the type scale, corner radius, button styling and how panels and the header are drawn, read from computed styles in a real browser. It also returns the design as CSS, Tailwind and shadcn/ui stylesheets. 10 credits, so do not call it for a description. To match how the site looks rather than only its tokens, take a screenshot of the page as well.
 
+**5. Hiring — only when the question is about growth, hiring or teams.**
+
+```
+POST https://api.hydrafetch.com/v1/web/index/jobs/changes
+{"domains": ["acme.com"], "since": "2026-10-01T00:00:00Z"}
+```
+
+What the company has open now, what it opened and closed since the date, by department, seniority and location, with the jobs themselves. It reads an index of company career sites that is re-read every few days, so it answers straight away. 1 credit, or nothing when the company is not tracked yet, in which case it simply comes back empty. Do not scrape a careers page to count jobs when this answers it.
+
 ## Budgeting
 
 A thorough profile is typically brand (5) plus three scrapes (3) plus a map (1): 9 credits. Adding the styleguide doubles it. If the user only asked what a company does, step 1 alone is usually the honest answer.
@@ -67,6 +76,7 @@ A thorough profile is typically brand (5) plus three scrapes (3) plus a map (1):
 - Do not scrape a homepage to get a logo. `brand` returns real assets with dimensions and background suitability.
 - Do not crawl an entire site for a summary.
 - Do not infer a company's colours from a screenshot. `styleguide` returns the resolved hex values.
+- Do not read a hiring trend from one careers page visit. A single read shows what is open, not what changed; hiring changes does.
 
 ## See it worked through
 
