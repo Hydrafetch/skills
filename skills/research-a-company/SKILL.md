@@ -74,7 +74,7 @@ POST https://api.hydrafetch.com/v1/web/news
 {"query": "Acme", "timeRange": "month", "limit": 10}
 ```
 
-Articles about the company, newest first, each with its outlet and publish time: funding, acquisitions, launches, leadership changes. Put the company name in `query`, add the kind of event when you want only that (`Acme raises`), and set the window with `timeRange` instead of writing dates into the query. 1 credit, nothing when there is no news. Several outlets often cover the same story, so read across them rather than counting articles.
+Articles about the company, newest first, each with its outlet and publish time: funding, acquisitions, launches, leadership changes. Search the company name on its own and pick the events you want from the titles: adding English event words such as `raises funding` makes the sources return general funding stories that crowd out the company's own coverage. Write the name the way its own press does, so a Chinese or Korean company by its Chinese or Korean name, and set the window with `timeRange` instead of writing dates into the query. 1 credit, nothing when there is no news. Several outlets often cover the same story, so read across them rather than counting articles.
 
 ## Budgeting
 
