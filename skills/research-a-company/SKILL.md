@@ -1,6 +1,6 @@
 ---
 name: research-a-company
-description: "Build a company profile from its domain: identity, logos and colours, positioning, site structure and hiring. Use for enrichment, competitor research, or answering what a company does."
+description: "Build a company profile from its domain: identity, logos and colours, positioning, site structure, hiring and recent news. Use for enrichment, competitor research, or answering what a company does."
 license: MIT
 ---
 
@@ -19,7 +19,7 @@ Builds a picture of a company from nothing but its domain: who they are, what th
 
 ## The sequence
 
-Work in this order and stop as soon as you have what was asked for. Each step costs credits, so do not run all five out of habit.
+Work in this order and stop as soon as you have what was asked for. Each step costs credits, so do not run all six out of habit.
 
 **1. Identity — one call, and often enough.**
 
@@ -67,6 +67,15 @@ POST https://api.hydrafetch.com/v1/web/index/jobs/changes
 
 What the company has open now, what it opened and closed since the date, by department, seniority and location, with the jobs themselves. It reads an index of company career sites that is re-read every few days, so it answers straight away. 1 credit, or nothing when the company is not tracked yet, in which case it simply comes back empty. Do not scrape a careers page to count jobs when this answers it.
 
+**6. Recent news, only when the question is about what the company did lately.**
+
+```
+POST https://api.hydrafetch.com/v1/web/news
+{"query": "Acme", "timeRange": "month", "limit": 10}
+```
+
+Articles about the company, newest first, each with its outlet and publish time: funding, acquisitions, launches, leadership changes. Put the company name in `query`, add the kind of event when you want only that (`Acme raises`), and set the window with `timeRange` instead of writing dates into the query. 1 credit, nothing when there is no news. Several outlets often cover the same story, so read across them rather than counting articles.
+
 ## Budgeting
 
 A thorough profile is typically brand (5) plus three scrapes (3) plus a map (1): 9 credits. Adding the styleguide doubles it. If the user only asked what a company does, step 1 alone is usually the honest answer.
@@ -77,6 +86,7 @@ A thorough profile is typically brand (5) plus three scrapes (3) plus a map (1):
 - Do not crawl an entire site for a summary.
 - Do not infer a company's colours from a screenshot. `styleguide` returns the resolved hex values.
 - Do not read a hiring trend from one careers page visit. A single read shows what is open, not what changed; hiring changes does.
+- Do not use web search to find what a company announced recently. News returns dated articles; search returns whatever ranks.
 
 ## See it worked through
 

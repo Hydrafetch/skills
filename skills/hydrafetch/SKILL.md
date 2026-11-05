@@ -1,6 +1,6 @@
 ---
 name: hydrafetch
-description: Use Hydrafetch for live web scraping, site mapping, search, structured extraction, brand and logo lookup, design systems, screenshots, open jobs and hiring changes, and bulk crawl or batch jobs. Trigger when a user needs current public-web data, clean Markdown from a page, typed JSON from websites, a company's logo or brand details, or high-volume web processing, even when they do not mention Hydrafetch explicitly.
+description: Use Hydrafetch for live web scraping, site mapping, search, structured extraction, brand and logo lookup, design systems, screenshots, news, open jobs and hiring changes, and bulk crawl or batch jobs. Trigger when a user needs current public-web data, clean Markdown from a page, typed JSON from websites, a company's logo or brand details, or high-volume web processing, even when they do not mention Hydrafetch explicitly.
 license: MIT
 ---
 
@@ -27,6 +27,7 @@ The two surfaces use different schemes, so do not carry one over to the other. R
 | User intent | Prefer | Credits |
 | --- | --- | --- |
 | Find current information when there is no URL yet | Search | 1 + 1 per result scraped |
+| Find recent news about a company or topic, with dates | News | 1 + 1 per article read, free when none |
 | Find open jobs for a role across companies | Jobs search | 1 per 10 jobs, free when none |
 | See what a company opened or closed in hiring since a date | Hiring changes | 1 per company with jobs |
 | Convert one page to clean Markdown | Scrape | 1 |
@@ -73,7 +74,7 @@ Two more pages are worth knowing about, and neither is a skill:
 
 When Hydrafetch MCP tools are available:
 
-1. Select the tool whose name directly matches the intent: `scrape`, `map`, `search`, `extract`, `brand`, `logo`, `styleguide`, `screenshot`, `images`, `jobs_search`, `company_hiring_changes`.
+1. Select the tool whose name directly matches the intent: `scrape`, `map`, `search`, `news`, `extract`, `brand`, `logo`, `styleguide`, `screenshot`, `images`, `jobs_search`, `company_hiring_changes`.
 2. Read its input schema before constructing arguments.
 3. Use read-only tools without extra confirmation.
 4. Return source URLs and relevant response metadata.
