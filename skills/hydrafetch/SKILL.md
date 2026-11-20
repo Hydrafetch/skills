@@ -1,6 +1,6 @@
 ---
 name: hydrafetch
-description: Use Hydrafetch for live web scraping, site mapping, search, structured extraction, brand and logo lookup, design systems, screenshots, news, open jobs and hiring changes, and bulk crawl or batch jobs. Trigger when a user needs current public-web data, clean Markdown from a page, typed JSON from websites, a company's logo or brand details, or high-volume web processing, even when they do not mention Hydrafetch explicitly.
+description: Use Hydrafetch for live web scraping, site mapping, search, structured extraction, brand and logo lookup, design systems, screenshots, news, open jobs and hiring changes, bulk crawl or batch jobs, and monitors that report when pages, sites or searches change. Trigger when a user needs current public-web data, clean Markdown from a page, typed JSON from websites, a company's logo or brand details, or high-volume web processing, or wants to know when a page or site changes, even when they do not mention Hydrafetch explicitly.
 license: MIT
 ---
 
@@ -42,12 +42,15 @@ The two surfaces use different schemes, so do not carry one over to the other. R
 | Extract a site's colours, type scale and components | Styleguide | 10 |
 | Capture what a page looks like | Screenshot | 5 |
 | List a page's images or links without rendering | Images / Links | 1 |
+| Be told when pages, a site or a search change | Monitors | 1 per page read or site/search check, +1 per change checked against a goal |
 
 Prefer a known URL over a broad search. Prefer map over crawl when only URLs are needed. Prefer a single scrape over a crawl for one page. Prefer logo over brand when the mark is all you need: it costs a fifth as much. Do not use a batch for one or two URLs, and do not loop over scrape for more than a handful.
 
 A failed request is never billed, and the price does not change with how hard the page was to retrieve. There is no stealth tier or proxy option to choose: send the URL and read the result.
 
 A crawl stays in the section its starting URL is in, so a crawl of `/docs` reads only the docs. Set `crawlEntireDomain: true` only when the user wants the whole site. A crawl or batch that is no longer wanted can be stopped with `DELETE` on its id, and the pages not yet read cost nothing. When a page fills in late, `waitForSelector` with a CSS selector for the content waits for it; `mobile: true` reads the page as a phone would. Leave both off unless the page needs them.
+
+When the user wants to know about changes over time, create a monitor once with `POST /v1/web/monitors` instead of writing a schedule that re-reads and diffs pages. A target is `{"type": "pages", "urls": [...]}` for changes to what pages say, `{"type": "site", "url": "..."}` for pages that appear or go away, or `{"type": "search", "query": "..."}` for results never seen before. Add a plain-words `goal` when only some changes matter, and a `webhook` to be told; otherwise read `GET /v1/web/monitors/{id}/checks`. Monitors are on paid plans, run from every 15 minutes to weekly (hourly at most with a search target), and a daily schedule is almost always enough.
 
 ## Route to the right skill
 
