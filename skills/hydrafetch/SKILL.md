@@ -50,7 +50,7 @@ A failed request is never billed, and the price does not change with how hard th
 
 A crawl stays in the section its starting URL is in, so a crawl of `/docs` reads only the docs. Set `crawlEntireDomain: true` only when the user wants the whole site. A crawl or batch that is no longer wanted can be stopped with `DELETE` on its id, and the pages not yet read cost nothing. When a page fills in late, `waitForSelector` with a CSS selector for the content waits for it; `mobile: true` reads the page as a phone would. Leave both off unless the page needs them.
 
-When the user wants to know about changes over time, create a monitor once with `POST /v1/web/monitors` instead of writing a schedule that re-reads and diffs pages. A target is `{"type": "pages", "urls": [...]}` for changes to what pages say, `{"type": "site", "url": "..."}` for pages that appear or go away, or `{"type": "search", "query": "..."}` for results never seen before. Add a plain-words `goal` when only some changes matter, and a `webhook` to be told; otherwise read `GET /v1/web/monitors/{id}/checks`. Monitors are on paid plans, run from every 15 minutes to weekly (hourly at most with a search target), and a daily schedule is almost always enough.
+When the user wants to know about changes over time, create a monitor once with `POST /v1/web/monitors` instead of writing a schedule that re-reads and diffs pages. A target is `{"type": "pages", "urls": [...]}` for changes to what pages say, `{"type": "site", "url": "..."}` for pages that appear or go away, or `{"type": "search", "query": "..."}` for results never seen before. Add a plain-words `goal` when only some changes matter, and a `webhook` to be told; otherwise read `GET /v1/web/monitors/{id}/checks`, or `monitor_changes` over MCP. Monitors are on paid plans, run from every 15 minutes to weekly (hourly at most with a search target), and a daily schedule is almost always enough.
 
 ## Route to the right skill
 
@@ -79,9 +79,9 @@ Two more pages are worth knowing about, and neither is a skill:
 
 When Hydrafetch MCP tools are available:
 
-1. Select the tool whose name directly matches the intent: `scrape`, `map`, `search`, `news`, `extract`, `brand`, `logo`, `styleguide`, `screenshot`, `images`, `jobs_search`, `company_hiring_changes`.
+1. Select the tool whose name directly matches the intent: `scrape`, `map`, `search`, `news`, `extract`, `brand`, `logo`, `styleguide`, `screenshot`, `images`, `jobs_search`, `company_hiring_changes`, and for monitors `monitor_create`, `monitor_list`, `monitor_changes`, `monitor_run`, `monitor_update`, `monitor_delete`.
 2. Read its input schema before constructing arguments.
-3. Use read-only tools without extra confirmation.
+3. Use read-only tools without extra confirmation. Confirm with the user before `monitor_create`, `monitor_update`, `monitor_run` or `monitor_delete`: a monitor keeps spending credits on its schedule until it is paused or deleted.
 4. Return source URLs and relevant response metadata.
 
 If the expected tools are missing, the server is not connected. Fall back to REST rather than
